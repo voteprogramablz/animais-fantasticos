@@ -1,22 +1,47 @@
-export default function initScrollAnimation() {
-  // Selecting all the elements which have the class 'js-scroll'
-  const sections = document.querySelectorAll('[data-scroll="js-scroll"]');
-  const halfOfWindow = window.innerHeight * 0.6;
-  // If "sections const" catch any element the function will continue
-  function showElementsOnScroll() {
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const isSectionVisible = (sectionTop - halfOfWindow) < 0;
+export default class ScrollAnimation {
+  constructor(sections) {
+    this.sections = document.querySelectorAll(sections);
+    this.halfOfWindow = window.innerHeight * 0.6;
 
-      if (isSectionVisible) {
-        section.classList.add('ativo');
-      } else if (section.classList.contains('ativo')) {
-        section.classList.remove('ativo');
-      }
+    this.checkDistance = this.checkDistance.bind(this);
+  }
+
+  // Pega a distância de cada item em relação ao topo do site.
+  getDistance() {
+    this.distance = [...this.sections].map((section) => {
+      const offset = section.offsetTop;
+      return {
+        element: section,
+        offset: Math.floor(offset - this.halfOfWindow),
+      };
     });
   }
-  if (sections.length) {
-    showElementsOnScroll();
-    window.addEventListener('scroll', showElementsOnScroll);
+
+  // Verifica a distância em cada objeto
+  // em relação ao scroll do site.
+  checkDistance() {
+    this.distance.forEach((item) => {
+      if (window.pageYOffset > item.offset) {
+        item.element.classList.add('ativo');
+      } else if (item.element.classList.contains('ativo')) {
+        item.element.classList.remove('ativo');
+      }
+      console.log(item);
+    });
+  }
+
+  init() {
+    if (this.sections.length) {
+      this.getDistance();
+      this.checkDistance();
+      window.addEventListener('scroll', this.checkDistance);
+    }
+    return this;
+  }
+
+  // Remove o listener que ativa a animação
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
+    return this;
   }
 }
