@@ -1,4 +1,4 @@
-import initAnimaNumeros from './anima-numeros.js';
+import AnimaNumeros from './anima-numeros.js';
 
 export default function initFetchAnimais() {
   async function fetchAnimais(url) {
@@ -20,8 +20,8 @@ export default function initFetchAnimais() {
     } catch (erro) {
       console.log(erro);
     }
-
-    initAnimaNumeros();
+    const animaNumeros = new AnimaNumeros('[data-numero]', '.numeros', 'ativo');
+    animaNumeros.init();
   }
 
   fetchAnimais('./animaisapi.json');
