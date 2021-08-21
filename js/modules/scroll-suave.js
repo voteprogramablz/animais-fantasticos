@@ -7,6 +7,11 @@ export default class ScrollSuave {
     } else {
       this.options = options;
     }
+
+    // bind abaixo pois o método scrollToSection
+    // será utilizado em um eventListener
+    // e precisamos re-referênciar o this nesse caso para
+    // fazer referência à classe e não ao objeto do eventListener
     this.scrollToSection = this.scrollToSection.bind(this);
   }
 
