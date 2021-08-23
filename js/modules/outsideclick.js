@@ -1,14 +1,9 @@
-/* Argumentos são:
-element: o elemento que contem o bubble não irá afetar no outside click.
-event: os eventos do addEventListener que serão incluidos.
-callback: a função que ele irá executar quando clicar fora.
-*/
 export default function outsideClick(element, events, callback) {
   const html = document.documentElement;
   const outside = 'data-outside';
 
-  // Como essa função sempre será ativada no bubble, então ela sempre terá 2 casos:
-  // Ou você está clicando pela primeira vez, ou o elemento já foi clicado
+  // Como essa função sempre será ativada no bubble, então ela pode estar em 2 casos:
+  // Ou você está clicando pela primeira vez, ou o elemento já foi clicado.
 
   // Se é a primeira vez que o usuário clica,
   // então ele não terá o atributo outside, nesse caso executará o if abaixo.
@@ -18,7 +13,8 @@ export default function outsideClick(element, events, callback) {
   // e adicionará handleOutsideClick no callback desse evento.
 
   function handleOutsideClick(event) {
-    if (!element.contains(event.target)) {
+    const clickWasOnTheElement = element.contains(event.target);
+    if (!clickWasOnTheElement) {
       element.removeAttribute(outside);
       events.forEach((userEvent) => {
         html.removeEventListener(userEvent, handleOutsideClick);
