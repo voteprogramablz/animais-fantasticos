@@ -40,4 +40,4 @@ funcionamento.init();
 
 fetchBitcoin('https://www.blockchain.com/ticker', '.btc-preco');
 
-fetchAnimais('../../animaisapi.json', '.numeros-grid');
+fetchAnimais('https://voteprogramablz.github.io/animais-fantasticos/animaisapi.json', '.numeros-grid');
