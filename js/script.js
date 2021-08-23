@@ -3,9 +3,9 @@ import Accordion from './modules/accordion-list.js';
 import TabNav from './modules/tab-nav.js';
 import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
-
 import fetchAnimais from './modules/fetch-animais.js';
 import DropdownMenu from './modules/dropdown-menu.js';
+
 import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
