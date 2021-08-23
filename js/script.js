@@ -3,13 +3,16 @@ import Accordion from './modules/accordion-list.js';
 import TabNav from './modules/tab-nav.js';
 import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
-import fetchAnimais from './modules/fetch-animais.js';
 import DropdownMenu from './modules/dropdown-menu.js';
 import MenuMobile from './modules/menu-mobile.js';
 
 import Funcionamento from './modules/funcionamento.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnimation from './modules/scroll-animation.js';
+import AnimaNumeros from './modules/anima-numeros.js';
+
+const animaNumeros = new AnimaNumeros('[data-numero]', '.numeros', 'ativo');
+animaNumeros.init();
 
 const scrollSuave = new ScrollSuave('[data-menu="js-menu"] a[href^="#"]');
 scrollSuave.init();
@@ -39,5 +42,3 @@ const funcionamento = new Funcionamento('[data-semana]', 'aberto');
 funcionamento.init();
 
 fetchBitcoin('https://www.blockchain.com/ticker', '.btc-preco');
-
-fetchAnimais('../animaisapi.json', '.numeros-grid');
