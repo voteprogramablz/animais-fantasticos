@@ -27,12 +27,7 @@ export default function fetchAnimais(url, target) {
   // e cria cada animal utilizando createAnimal.
   async function criarAnimais() {
     try {
-      const animaisResponse = await fetch(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      });
+      const animaisResponse = await fetch(url);
       const animaisJSON = await animaisResponse.json();
 
       // Após a transformação de json, ativa as funções
