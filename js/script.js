@@ -10,6 +10,7 @@ import Funcionamento from './modules/funcionamento.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import ScrollAnimation from './modules/scroll-animation.js';
 import AnimaNumeros from './modules/anima-numeros.js';
+import { SlideNav } from './modules/slide.js';
 
 const animaNumeros = new AnimaNumeros('[data-numero]', '.numeros', 'ativo');
 animaNumeros.init();
@@ -42,3 +43,10 @@ const funcionamento = new Funcionamento('[data-semana]', 'aberto');
 funcionamento.init();
 
 fetchBitcoin('https://www.blockchain.com/ticker', '.btc-preco');
+
+const slide = new SlideNav('.slide', '.slide-wrapper');
+
+slide.init();
+// slide.addArrow('.prev', '.next');
+
+slide.addControl('.custom-controls');
