@@ -66,8 +66,8 @@
     width: 100%;
     padding: .7rem .5rem;
     box-sizing: border-box;
-    border: 2px #222;
-    border-radius: 0px;
+    border: 2px solid #222;
+    border-radius: 4px;
 }
 
 .modal button[type="submit"] {
